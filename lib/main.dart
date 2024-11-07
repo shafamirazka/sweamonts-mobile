@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sweamonts/menu.dart';
+import 'package:sweamonts/screens/menu.dart';
 
 void main() {
   runApp(const MyApp());
