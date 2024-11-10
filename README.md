@@ -1,237 +1,178 @@
-1. Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget, dan jelaskan perbedaan dari keduanya.
-Jawab:
-- Stateless Widget adalah widget yang tidak memiliki status yang dapat berubah selama aplikasi berjalan. Ini berarti data atau tampilan widget bersifat tetap setelah pertama kali dibangun. Setiap kali widget dibangun, tampilannya selalu sama, tanpa ada interaksi atau perubahan yang mempengaruhi UI setelah aplikasi dijalankan.
+# Tugas 7 - Flutter
 
-- Stateful Widget, di sisi lain, memiliki status internal yang bisa berubah. Widget ini digunakan ketika tampilan atau data dalam widget bergantung pada interaksi pengguna atau perubahan dalam aplikasi. Ketika status berubah, widget akan merender ulang bagian tertentu dari UI untuk mencerminkan perubahan tersebut.
+### 1. Jelaskan apa yang dimaksud dengan Stateless Widget dan Stateful Widget, dan jelaskan perbedaan dari keduanya.
 
-Perbedaan utama:
-- Stateless Widget tidak memiliki perubahan status selama aplikasi berjalan, sedangkan Stateful Widget memungkinkan perubahan status yang dapat mempengaruhi tampilan.
-- Stateless Widget lebih sederhana dan lebih efisien untuk digunakan ketika tampilan tidak berubah. Stateful Widget digunakan ketika tampilan bergantung pada input atau data yang berubah.
+**Stateless Widget**  
+Stateless Widget adalah widget yang tidak memiliki status yang dapat berubah selama aplikasi berjalan. Data atau tampilan widget ini bersifat tetap setelah pertama kali dibangun, artinya tampilannya selalu sama tanpa ada perubahan atau interaksi yang mempengaruhi UI setelah aplikasi dijalankan.
 
+**Stateful Widget**  
+Stateful Widget memiliki status internal yang dapat berubah. Widget ini digunakan ketika tampilan atau data dalam widget bergantung pada interaksi pengguna atau perubahan dalam aplikasi. Ketika status berubah, widget akan merender ulang bagian tertentu dari UI untuk mencerminkan perubahan tersebut.
 
-2. Sebutkan widget apa saja yang kamu gunakan pada proyek ini dan jelaskan fungsinya.
-Jawab:
-Dalam proyek Flutter ini, beberapa widget digunakan untuk membangun antarmuka pengguna
+**Perbedaan Utama**  
+- Stateless Widget tidak mengalami perubahan status selama aplikasi berjalan, sedangkan Stateful Widget memungkinkan perubahan status yang mempengaruhi tampilan.
+- Stateless Widget lebih sederhana dan efisien digunakan ketika tampilan tidak berubah, sedangkan Stateful Widget digunakan ketika tampilan bergantung pada input atau data yang berubah.
 
-1. MaterialApp:
-   Menyediakan struktur dasar aplikasi dengan pengaturan tema dan navigasi. Ini adalah widget utama yang membungkus aplikasi.
+---
 
-2. Scaffold:
-   Menyediakan struktur halaman yang terdiri dari AppBar, Body, dan bagian lainnya. Scaffold adalah widget dasar untuk membuat tampilan layar dengan elemen-elemen seperti toolbar dan area konten.
+### 2. Sebutkan widget apa saja yang kamu gunakan pada proyek ini dan jelaskan fungsinya.
 
-3. AppBar:
-   Untuk menampilkan bagian atas aplikasi, biasanya berisi judul, ikon, atau tombol navigasi.
+Pada proyek Flutter ini, beberapa widget digunakan untuk membangun antarmuka pengguna:
 
-4. Column:
-   Untuk menyusun elemen secara vertikal. Dalam proyek ini, digunakan untuk menyusun beberapa widget seperti Row, Text, dan GridView.
+1. **MaterialApp**: Menyediakan struktur dasar aplikasi dengan pengaturan tema dan navigasi. Widget utama yang membungkus aplikasi.
+2. **Scaffold**: Struktur halaman terdiri dari `AppBar`, `Body`, dan elemen lainnya. 
+3. **AppBar**: Menampilkan bagian atas aplikasi, biasanya berisi judul dan ikon navigasi.
+4. **Column**: Menyusun elemen secara vertikal, seperti `Row`, `Text`, dan `GridView`.
+5. **Row**: Menyusun elemen secara horizontal, digunakan untuk menampilkan tiga `InfoCard` secara berdampingan.
+6. **Text**: Menampilkan teks pada layar, seperti judul aplikasi dan teks informasi.
+7. **Card**: Membuat tampilan kartu dengan bayangan, seperti di `InfoCard`.
+8. **SizedBox**: Memberikan jarak kosong antara elemen-elemen di antarmuka.
+9. **GridView**: Menampilkan item dalam format grid, digunakan untuk `ItemCard`.
+10. **Material**: Menerapkan tema material design, berisi `InkWell` untuk efek sentuhan.
+11. **InkWell**: Memberikan efek ripple saat pengguna mengetuk area tertentu, digunakan pada `ItemCard`.
+12. **SnackBar**: Menampilkan pesan sementara di bagian bawah layar.
+13. **Icon**: Menampilkan ikon pada `ItemCard`, seperti ikon mood, tambah, dan logout.
+14. **Container**: Widget dasar untuk mengatur ukuran dan penataan elemen dalam `ItemCard` dan `InfoCard`.
 
-5. Row:
-   Untuk menyusun elemen secara horizontal. Dalam proyek ini, Row digunakan untuk menampilkan tiga InfoCard secara berdampingan.
+---
 
-6. Text:
-   Untuk menampilkan teks di dalam AppBar dan juga teks yang menunjukkan informasi pada layar, seperti "Welcome to sweamonts".
+### 3. Apa fungsi dari `setState()`? Jelaskan variabel apa saja yang dapat terdampak dengan fungsi tersebut.
 
-7. Card:
-   Untuk membuat tampilan kartu dengan bayangan, yang digunakan dalam InfoCard untuk menampilkan informasi seperti NPM, Nama, dan Kelas.
+`setState()` adalah metode yang memberi tahu framework bahwa ada perubahan pada *state* suatu widget yang memerlukan render ulang agar UI memperbarui tampilan. `setState()` umumnya digunakan dalam Stateful Widget untuk memperbarui tampilan ketika nilai variabel yang ada di dalam widget berubah. Hanya variabel atau properti dalam Stateful Widget yang digunakan di dalam metode `build()` yang akan terdampak oleh `setState()`.
 
-8. SizedBox:
-   Memberikan ruang kosong dengan ukuran tertentu. Digunakan untuk memberikan jarak antara elemen-elemen di antarmuka pengguna.
+---
 
-9. GridView:
-   Menampilkan item dalam format grid. Dalam proyek ini, digunakan untuk menampilkan beberapa ItemCard secara grid dengan 3 kolom.
+### 4. Jelaskan perbedaan antara `const` dengan `final`.
 
-10. Material:
-    Menerapkan tema material design. Di dalamnya terdapat InkWell, yang memberikan efek sentuhan saat item dipilih.
+- **const (Compile-Time Constant)**:  
+  Nilai harus sudah diketahui dan tetap sebelum program dijalankan. `const` digunakan untuk nilai yang konstan secara universal, seperti angka matematika tetap (misalnya π) atau teks tetap.  
 
-11. InkWell:
-    Memberikan efek ripple saat pengguna mengetuk area tertentu. Digunakan dalam ItemCard untuk memberikan respons visual ketika kartu ditekan.
+- **final (Run-Time Constant)**:  
+  Variabel `final` hanya bisa diinisialisasi sekali, tetapi inisialisasinya bisa ditunda hingga runtime. `final` digunakan untuk nilai yang ditentukan saat runtime dan tidak akan berubah setelahnya.
 
-12. SnackBar:
-    Menampilkan pesan sementara di bagian bawah layar. Dalam proyek ini, digunakan dalam ItemCard untuk menunjukkan pesan ketika salah satu kartu ditekan.
+---
 
-13. Icon:
-    Menampilkan ikon di dalam ItemCard, seperti ikon mood, tambah, dan logout, yang mewakili setiap tindakan atau pilihan.
+### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist-checklist di atas.
 
-14. Container:
-    Widget dasar yang digunakan untuk mengatur ukuran dan penataan elemen-elemen dalam ItemCard dan InfoCard.
+1. **Membuat Program Flutter Baru dengan Tema E-Commerce**  
+   Membuat proyek baru dengan perintah `flutter create sweamonts`, lalu mengubah file `lib/main.dart` untuk menampilkan antarmuka aplikasi bertema E-Commerce.
 
-Widget-widget ini bekerja bersama untuk membangun antarmuka pengguna yang interaktif dan responsif pada aplikasi yang sedang dikembangkan.
+2. **Membuat Tiga Tombol dengan Ikon dan Teks**  
+   Menggunakan `IconButton` atau `ElevatedButton` yang dilengkapi dengan ikon dan teks, mendefinisikan list `items` yang berisi tiga objek `ItemHomepage`.
 
- 
-3. Apa fungsi dari setState()? Jelaskan variabel apa saja yang dapat terdampak dengan fungsi tersebut.
-Jawab:
-Dalam Flutter, setState() adalah metode yang digunakan untuk memberi tahu framework bahwa ada perubahan pada state (keadaan) suatu widget sehingga perlu dirender ulang agar tampilan terbaru dapat ditampilkan pada antarmuka pengguna. Metode ini biasanya digunakan dalam stateful widget (widget yang dapat berubah seiring waktu) dan bertujuan memperbarui tampilan ketika nilai dari variabel-variabel yang ada di dalam widget tersebut berubah. Dengan memanggil setState(), kita memberi sinyal kepada Flutter bahwa ada perubahan, sehingga framework akan memanggil ulang metode build() dari widget terkait untuk menggambar ulang antarmuka sesuai perubahan terbaru.
+3. **Mengimplementasikan Warna yang Berbeda untuk Setiap Tombol**  
+   Setiap tombol diberikan warna dengan menggunakan objek `Color` pada konstruktor `ItemHomepage`.
 
-- Variabel yang Terdampak oleh setState()
-Hanya variabel atau properti yang ada di dalam stateful widget dan digunakan dalam metode build() yang akan terdampak oleh setState(). Variabel ini biasanya berisi data yang mempengaruhi tampilan langsung, seperti nilai yang ditampilkan di widget Text, Image, atau elemen UI lainnya. Selain itu, variabel yang berubah akibat interaksi pengguna, seperti jumlah klik tombol, status saklar, atau pengaturan aplikasi, juga akan terpengaruh. Saat setState() dipanggil, Flutter akan merender ulang widget terkait, memperbarui tampilan UI agar sesuai dengan perubahan pada variabel yang digunakan dalam build(). Ini memastikan bahwa UI selalu mencerminkan kondisi data terbaru.
+4. **Memunculkan Snackbar Ketika Tombol Ditekan**  
+   Menggunakan `ScaffoldMessenger.of(context).showSnackBar()` untuk menampilkan `Snackbar` ketika tombol ditekan.
 
-Variabel lokal yang hanya digunakan dalam metode lain dan tidak mempengaruhi UI tidak akan dipengaruhi oleh setState().
+---
 
- 
-4. Jelaskan perbedaan antara const dengan final.
-Jawab:
-Dalam Dart, const dan final adalah keyword yang digunakan untuk mendefinisikan variabel konstan, nilainya tidak dapat diubah setelah inisialisasi.
+# Tugas 8
 
-A. const (Compile-Time Constant)
-   - Variabel yang dideklarasikan dengan const harus diinisialisasi pada saat compile-time. Nilai variabel tersebut harus sudah diketahui dan tetap sebelum program dijalankan.
-   - const digunakan untuk nilai yang bersifat konstan secara universal, seperti angka matematika tetap (pi, e), teks tetap, atau nilai yang benar-benar tidak tergantung pada masukan pengguna atau kondisi runtime lainnya.
-   - contoh:
-     const num pi = 3.14;
+### 1. **Apa kegunaan const di Flutter? Jelaskan apa keuntungan ketika menggunakan const pada kode Flutter. Kapan sebaiknya kita menggunakan const, dan kapan sebaiknya tidak digunakan?**
 
-     void main() {
-       var radius = 7;
-       print(Luas lingkaran dengan radius $radius = ${calculateCircleArea(radius)});
-     }
+**Jawab:**
+`const` di Flutter digunakan untuk mendeklarasikan objek atau widget yang nilai dan properti-propertinya tidak berubah selama runtime aplikasi. Dengan menggunakan `const`, Flutter bisa mengoptimalkan penggunaan memori dan kinerja aplikasi. Widget yang diberi `const` akan dipakai kembali (cached) tanpa perlu membuat ulang instansi widget tersebut saat widget tersebut di-rebuild.
 
-     num calculateCircleArea(num radius) => pi  radius  radius;
-    
-     Pada contoh ini, pi adalah variabel const, sehingga nilainya ditentukan di awal (compile-time) dan tidak dapat diubah di mana pun dalam program.
+Keuntungan menggunakan `const`:
+- **Efisiensi**: Menghindari pembuatan ulang objek yang sama dan mengurangi penggunaan memori.
+- **Performa**: Meningkatkan kinerja aplikasi karena objek yang dideklarasikan dengan `const` hanya dibuat sekali.
 
-   - Pada const, nilai tetap akan selalu sama setiap kali program dijalankan, tanpa dipengaruhi oleh masukan atau kondisi program.
+Sebaiknya menggunakan `const` ketika widget atau objek memiliki nilai tetap, seperti warna, ikon, atau teks yang tidak berubah. Tidak perlu menggunakan `const` jika data atau properti widget bersifat dinamis atau berubah sesuai input pengguna.
 
-B. final (Run-Time Constant)
-   - Variabel yang dideklarasikan dengan final hanya bisa diinisialisasi sekali, tetapi inisialisasinya bisa ditunda hingga run-time (saat program berjalan). Nilai final bisa bergantung pada operasi atau nilai yang baru diketahui saat aplikasi berjalan.
-   - Digunakan untuk nilai yang ditentukan saat runtime dan tidak akan berubah setelahnya. Misalnya, nilai yang diambil dari masukan pengguna atau hasil perhitungan yang hanya ingin ditetapkan sekali.
-   - contoh:
-     void main() {
-       final firstName = "Achmad";
-       final lastName = "Ilham";
+---
 
-       lastName = Angga; // Ini akan menghasilkan error karena final tidak bisa diubah setelah inisialisasi
+### 2. **Jelaskan dan bandingkan penggunaan Column dan Row pada Flutter. Berikan contoh implementasi dari masing-masing layout widget ini!**
 
-       print(Hello $firstName $lastName);
-     }
-     Dalam contoh ini, firstName dan lastName diinisialisasi sebagai final, sehingga nilainya ditentukan hanya sekali pada saat runtime dan tidak dapat diubah setelahnya.
+**Jawab:**
+- **Column**: Mengatur widget anak secara vertikal (dari atas ke bawah).
+  - **Contoh**:
+    ```dart
+    Column(
+      children: <Widget>[
+        Text('Item 1'),
+        Text('Item 2'),
+        Text('Item 3'),
+      ],
+    )
+    ```
+  Column digunakan pada halaman `MyHomePage` untuk menampilkan informasi seperti NPM, Nama, dan Kelas secara vertikal di dalam `Column` widget.
 
-   - final digunakan ketika nilai variabel tidak dapat ditentukan pada saat kompilasi, tetapi nilai tersebut hanya perlu diatur satu kali saat program berjalan.
+- **Row**: Mengatur widget anak secara horizontal (dari kiri ke kanan).
+  - **Contoh**:
+    ```dart
+    Row(
+      children: <Widget>[
+        Icon(Icons.star),
+        Icon(Icons.favorite),
+        Icon(Icons.home),
+      ],
+    )
+    ```
+  Row digunakan dalam `MyHomePage` untuk menampilkan `InfoCard` secara horizontal.
 
- 
-5. Jelaskan bagaimana cara kamu mengimplementasikan checklist-checklist di atas.
-Jawab:
+Perbandingan:
+- **Column** lebih cocok untuk mengatur widget secara vertikal, seperti daftar data.
+- **Row** lebih cocok untuk mengatur widget secara horizontal, seperti menu atau ikon.
 
-1. Membuat Program Flutter Baru dengan Tema E-Commerce
-  - mengetik flutter create sweamonts
+---
 
-2. Membuat Tiga Tombol Sederhana dengan Ikon dan Teks
-   Menggunakan widget IconButton atau ElevatedButton yang dilengkapi dengan ikon dan teks.
+### 3. **Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!**
 
-   List<ItemHomepage> items = [
-     ItemHomepage("Lihat Daftar Produk", Icons.mood, Color(0xFB9AC1)),
-     ItemHomepage("Tambah Produk", Icons.add, Color(0xFFDC90)),
-     ItemHomepage("Logout", Icons.logout, Color(0xDF8D7D)),
-   ];
+**Jawab:**
+Pada halaman form `ProductEntryFormPage`, elemen input yang digunakan adalah:
+- **TextFormField**: Digunakan untuk input teks, seperti `Name`, `Description`, dan `Amount`.
+  - `TextFormField` digunakan pada form untuk nama produk, deskripsi produk, dan jumlah produk yang akan ditambahkan.
+  - Setiap `TextFormField` dilengkapi dengan validasi untuk memastikan input tidak kosong dan sesuai dengan format yang diinginkan (misalnya, `Amount` harus berupa angka).
 
-   Di atas, kita membuat list items yang berisi tiga objek ItemHomepage. Setiap objek ini memiliki nama, ikon, dan warna khusus untuk masing-masing tombol.
+Elemen input Flutter lain yang tidak digunakan pada tugas ini:
+1. **DropdownButton**: Untuk memilih satu opsi dari daftar.
+2. **Switch**: Untuk memilih status biner (On/Off).
+3. **Slider**: Untuk memilih nilai dalam rentang tertentu.
+4. **Radio**: Untuk memilih satu dari beberapa opsi yang ada.
 
-   - Lihat Daftar Produk menggunakan ikon Icons.mood dengan warna Color(0xFB9AC1).
-   - Tambah Produk menggunakan ikon Icons.add dengan warna Color(0xFFDC90).
-   - Logout menggunakan ikon Icons.logout dengan warna Color(0xDF8D7D).
+---
 
-3. Mengimplementasikan Warna-Warna yang Berbeda untuk Setiap Tombol
-   - Setiap tombol diberikan warna yang berbeda dengan menentukan warna khusus menggunakan objek Color. Di bagian kode yang sudah disediakan di atas, setiap tombol memiliki warna masing-masing yang sudah diatur pada konstruktor ItemHomepage.
+### 4. **Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?**
 
-4. Memunculkan Snackbar Ketika Tombol Ditekan
-   - Untuk menampilkan pesan Snackbar ketika tombol ditekan, kita bisa menggunakan ScaffoldMessenger.of(context).showSnackBar(). Berikut adalah implementasi untuk menampilkan Snackbar sesuai dengan tombol yang ditekan:
-   
-   Pada widget ItemCard, yang bertugas menampilkan setiap tombol, kita menggunakan widget InkWell untuk menangani interaksi pengguna:
+**Jawab:**
+Untuk mengatur tema dalam aplikasi Flutter, saya menggunakan properti `theme` dalam widget `MaterialApp`. Tema yang digunakan akan menentukan tampilan aplikasi secara keseluruhan, seperti warna latar belakang, warna teks, dan elemen UI lainnya.
 
-   InkWell(
-     onTap: () {
-       String message;
-       if (item.name == "Lihat Daftar Produk") {
-         message = "Kamu telah menekan tombol Lihat Daftar Produk!";
-       } else if (item.name == "Tambah Produk") {
-         message = "Kamu telah menekan tombol Tambah Produk!";
-       } else {
-         message = "Kamu telah menekan tombol Logout!";
-       }
-       ScaffoldMessenger.of(context)
-         ..hideCurrentSnackBar() // Menyembunyikan snackbar yang sedang aktif
-         ..showSnackBar(SnackBar(content: Text(message))); // Menampilkan snackbar baru
-     },
-     child: Container(
-       padding: const EdgeInsets.all(8),
-       child: Center(
-         child: Column(
-           mainAxisAlignment: MainAxisAlignment.center,
-           children: [
-             Icon(item.icon, color: Colors.white, size: 30.0),
-             Padding(padding: EdgeInsets.all(3)),
-             Text(item.name, textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
-           ],
-         ),
-       ),
-     ),
-   );
-   
-   Pada kode di atas:
-   - Ketika pengguna mengetuk tombol, aplikasi memeriksa nama tombol dan menampilkan pesan sesuai dengan tombol yang ditekan.
-   - Menggunakan ScaffoldMessenger.of(context).showSnackBar() untuk menampilkan Snackbar dengan pesan yang sesuai.
+Pada aplikasi yang saya buat, tema diatur dalam kode berikut:
+```dart
+MaterialApp(
+  theme: ThemeData(
+    colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple),
+    useMaterial3: true,
+  ),
+  home: MyHomePage(),
+)
+```
+Tema ini mengatur skema warna aplikasi menggunakan `ColorScheme` dengan `primarySwatch` yang berwarna deep purple. Dengan ini, warna latar belakang dan elemen UI di seluruh aplikasi menjadi konsisten.
 
-5. Penjelasan Cara Mengimplementasikan Checklist-Checklist di Atas
+---
 
- 1. Membuat Program Flutter Baru dengan Tema E-Commerce
-   - Langkah pertama adalah membuat aplikasi Flutter baru dengan menjalankan perintah flutter create <nama_project>. Dalam kasus ini, nama proyek yang digunakan adalah sweamonts.
-   - Setelah proyek berhasil dibuat, buka folder proyek dan ubah file lib/main.dart untuk memulai membangun tampilan aplikasi sesuai tema E-Commerce yang diinginkan.
+### 5. **Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?**
 
- 2. Membuat Tiga Tombol Sederhana dengan Ikon dan Teks
-   - Untuk membuat tombol, kita menggunakan widget ItemHomepage yang berisi nama tombol, ikon, dan warna khusus untuk setiap tombol.
-   - Berikut adalah cara mendeklarasikan tiga tombol menggunakan list items:
-   
-   List<ItemHomepage> items = [
-     ItemHomepage("Lihat Daftar Produk", Icons.mood, Color(0xFB9AC1)),
-     ItemHomepage("Tambah Produk", Icons.add, Color(0xFFDC90)),
-     ItemHomepage("Logout", Icons.logout, Color(0xDF8D7D)),
-   ];
-   
-   Di sini, kita mendefinisikan tiga objek ItemHomepage, di mana setiap objek mewakili tombol dengan ikon dan warna yang berbeda:
-   - Lihat Daftar Produk menggunakan ikon Icons.mood dengan warna Color(0xFB9AC1) (merah muda).
-   - Tambah Produk menggunakan ikon Icons.add dengan warna Color(0xFFDC90) (kuning lembut).
-   - Logout menggunakan ikon Icons.logout dengan warna Color(0xDF8D7D) (merah muda).
+**Jawab:**
+Navigasi antar halaman dalam aplikasi Flutter dapat dilakukan dengan menggunakan `Navigator` dan `MaterialPageRoute`. Untuk berpindah antar halaman, saya menggunakan `Navigator.push()` untuk membuka halaman baru dan `Navigator.pop()` untuk kembali ke halaman sebelumnya.
 
- 3. Mengimplementasikan Warna-Warna yang Berbeda untuk Setiap Tombol
-   - Setiap tombol diberikan warna khusus, yang ditentukan melalui parameter Color pada objek ItemHomepage. Setiap warna ini membuat tombol lebih mudah dibedakan berdasarkan fungsinya.
-   - Misalnya, tombol "Lihat Daftar Produk" menggunakan warna Color(0xFB9AC1) yang memberikan kesan cerah dan lembut.
+Contoh implementasi navigasi:
+```dart
+Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => ProductEntryFormPage()),
+);
+```
+Pada aplikasi yang saya buat, navigasi dilakukan melalui drawer menggunakan `Navigator.pushReplacement()`. Misalnya, pada `LeftDrawer`, ketika item menu "Tambah Produk" dipilih, aplikasi akan menavigasi ke halaman form produk baru (`ProductEntryFormPage`):
+```dart
+Navigator.pushReplacement(
+  context,
+  MaterialPageRoute(
+    builder: (context) => ProductEntryFormPage(),
+  ),
+);
+```
+Dengan ini, aplikasi dapat berpindah antar halaman dengan lancar, seperti dari halaman utama ke halaman form produk dan sebaliknya.
 
- 4. Memunculkan Snackbar Ketika Tombol Ditekan
-   - Ketika tombol ditekan, kita ingin menampilkan pesan yang memberi tahu pengguna tombol mana yang mereka pilih. Untuk melakukan ini, kita menggunakan ScaffoldMessenger.of(context).showSnackBar() untuk menampilkan Snackbar dengan pesan yang sesuai.
-   
-   Berikut adalah implementasi untuk menampilkan Snackbar ketika tombol ditekan:
-   
-   InkWell(
-     onTap: () {
-       String message;
-       if (item.name == "Lihat Daftar Produk") {
-         message = "Kamu telah menekan tombol Lihat Daftar Produk!";
-       } else if (item.name == "Tambah Produk") {
-         message = "Kamu telah menekan tombol Tambah Produk!";
-       } else {
-         message = "Kamu telah menekan tombol Logout!";
-       }
-       ScaffoldMessenger.of(context)
-         ..hideCurrentSnackBar() // Menyembunyikan snackbar yang sedang tampil
-         ..showSnackBar(SnackBar(content: Text(message))); // Menampilkan snackbar baru
-     },
-     child: Container(
-       padding: const EdgeInsets.all(8),
-       child: Center(
-         child: Column(
-           mainAxisAlignment: MainAxisAlignment.center,
-           children: [
-             Icon(item.icon, color: Colors.white, size: 30.0),
-             Padding(padding: EdgeInsets.all(3)),
-             Text(item.name, textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
-           ],
-         ),
-       ),
-     ),
-   );
-   
-   - InkWell digunakan untuk menangani interaksi pengguna, yaitu ketika tombol ditekan (tap).
-   - ScaffoldMessenger.of(context).showSnackBar() menampilkan pesan dalam bentuk Snackbar yang memberi tahu pengguna tombol mana yang mereka tekan.
-
- 5. Penjelasan Implementasi Langkah-Langkah di Atas
-   - Membuat Program Flutter Baru: Dengan perintah flutter create, kita membuat proyek baru dan menyesuaikan file main.dart untuk menampilkan antarmuka pengguna.
-   - Membuat Tombol dengan Ikon dan Teks: Tombol-tombol tersebut dibuat dengan mendefinisikan objek ItemHomepage yang menyimpan nama tombol, ikon, dan warna. Tombol kemudian ditampilkan di layar menggunakan ItemCard dan GridView untuk menata tombol-tombol tersebut dalam bentuk grid.
-   - Menerapkan Warna yang Berbeda untuk Setiap Tombol: Warna khusus untuk setiap tombol ditentukan pada konstruktor ItemHomepage menggunakan kode warna Color(0xFF...).
-   - Memunculkan Snackbar: Saat tombol ditekan, aplikasi akan menampilkan pesan menggunakan ScaffoldMessenger.of(context).showSnackBar() untuk menampilkan Snackbar dengan informasi tombol yang dipilih.
+--- 
