@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sweamonts/widgets/left_drawer.dart';
-import 'package:sweamonts/screens/productentry_form.dart';
 import 'package:sweamonts/widgets/product_card.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -10,9 +9,12 @@ class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
 
   final List<ItemHomepage> items = [
-    ItemHomepage("Lihat Daftar Produk", Icons.mood, const Color(0xFFF3E5F5)),
-    ItemHomepage("Tambah Produk", Icons.add, const Color(0xFFF3E5F5)),
-    ItemHomepage("Logout", Icons.logout, const Color(0xFFF3E5F5)),
+    ItemHomepage("Lihat Daftar Produk", Icons.mood, const Color(0xFFF3E5F5),
+        const Color(0xFF7B1FA2)),
+    ItemHomepage("Tambah Produk", Icons.add, const Color(0xFFE1F6FD),
+        const Color(0xFF1193B2)),
+    ItemHomepage("Logout", Icons.logout, const Color(0xFFFDE7F0),
+        const Color(0xFFD13774)),
   ];
 
   @override
@@ -108,8 +110,11 @@ class InfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      // Membuat kotak kartu dengan bayangan dibawahnya.
-      elevation: 2.0,
+      elevation: 4.0, // Menambahkan elevasi untuk memberikan efek bayangan.
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(
+            12.0), // Membuat sudut kartu lebih bulat (opsional).
+      ),
       child: Container(
         // Mengatur ukuran dan jarak di dalam kartu.
         width: MediaQuery.of(context).size.width /

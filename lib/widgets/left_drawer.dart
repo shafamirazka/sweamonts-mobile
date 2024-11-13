@@ -10,11 +10,11 @@ class LeftDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
-          DrawerHeader(
+          const DrawerHeader(
             decoration: BoxDecoration(
-              color: const Color(0xFFAB47BC),
+              color: Color(0xFFAB47BC),
             ),
-            child: const Column(
+            child: Column(
               children: [
                 Text(
                   'Sweamonts',
@@ -59,7 +59,7 @@ class LeftDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ProductEntryFormPage(),
+                    builder: (context) => const ProductEntryFormPage(),
                   ));
             },
           ),

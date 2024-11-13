@@ -6,8 +6,9 @@ class ItemHomepage {
   final String name;
   final IconData icon;
   final Color color;
+  final Color iconColor;
 
-  ItemHomepage(this.name, this.icon, this.color);
+  ItemHomepage(this.name, this.icon, this.color, this.iconColor);
 }
 
 class ItemCard extends StatelessWidget {
@@ -40,7 +41,7 @@ class ItemCard extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) =>
-                    ProductEntryFormPage(), // Halaman yang ingin dituju
+                    const ProductEntryFormPage(), // Halaman yang ingin dituju
               ),
             );
           }
@@ -55,14 +56,14 @@ class ItemCard extends StatelessWidget {
               children: [
                 Icon(
                   item.icon,
-                  color: const Color(0XFF7B1FA2),
+                  color: item.iconColor,
                   size: 30.0,
                 ),
                 const Padding(padding: EdgeInsets.all(3)),
                 Text(
                   item.name,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: const Color(0XFF7B1FA2)),
+                  style: TextStyle(color: item.iconColor),
                 ),
               ],
             ),
